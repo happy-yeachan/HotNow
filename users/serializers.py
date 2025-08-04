@@ -8,3 +8,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'id', 'email', 'nickname',
             'location_lat', 'location_lng', 'location_name'
         ]
+
+class UserLocationUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['location_lat', 'location_lng', 'location_name']
