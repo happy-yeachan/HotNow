@@ -46,7 +46,7 @@ class TrendListView(APIView):
         return None, None
 
     def filter_by_distance(self, queryset, user_lat, user_lng, radius):
-        # 🧭 두 좌표 간 거리(m)를 계산하는 함수 (Haversine 공식)
+        # 두 좌표 간 거리(m)를 계산하는 함수 (Haversine 공식)
         def haversine(lat1, lon1, lat2, lon2):
             R = 6371000  # 지구 반지름 (m)
             d_lat = radians(lat2 - lat1)
@@ -57,7 +57,7 @@ class TrendListView(APIView):
 
         nearby = []
 
-        # 📍 각 트렌드 키워드의 위치와 사용자 위치 비교
+        # 각 트렌드 키워드의 위치와 사용자 위치 비교
         for item in queryset:
             if item.latitude and item.longitude:
                 distance = haversine(
@@ -65,7 +65,7 @@ class TrendListView(APIView):
                     float(item.latitude), float(item.longitude)
                 )
 
-                # ✅ 반경 내에 있으면 리스트에 추가
+                # 반경 내에 있으면 리스트에 추가
                 if distance <= radius:
                     nearby.append(item)
 
