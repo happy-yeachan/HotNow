@@ -26,3 +26,16 @@ class TrendKeyword(models.Model):
 
     def __str__(self):
         return f'{self.name} ({self.category})'
+
+class TrendEventLog(models.Model):
+    keyword = models.ForeignKey(TrendKeyword, on_delete=models.CASCADE, related_name='event_logs')
+    source_type = models.CharField(max_length=20, choices=[
+        ('sns', 'SNS'),
+        ('community', '커뮤니티'),
+        ('news', '뉴스')
+    ])
+    mention_count = models.IntegerField(default=1)
+    event_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.keyword.name} - {self.source_type} - {self.mention_count}회"
