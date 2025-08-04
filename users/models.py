@@ -13,4 +13,4 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']         # createsuperuser 명령에서 필요
 
     def __str__(self):
-        return self.email
+        return f"{self.email} ({self.nickname})"
