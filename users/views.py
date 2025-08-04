@@ -1,5 +1,4 @@
 from rest_framework import generics, permissions
-from .models import User
 from .serializers import UserProfileSerializer, UserLocationUpdateSerializer
 
 class MeView(generics.RetrieveAPIView):
