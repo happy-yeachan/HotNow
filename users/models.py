@@ -8,6 +8,8 @@ class User(AbstractUser):
     location_lat = models.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
     location_lng = models.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
     location_name = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'email'               # 로그인 ID로 email 사용
     REQUIRED_FIELDS = ['username']         # createsuperuser 명령에서 필요
